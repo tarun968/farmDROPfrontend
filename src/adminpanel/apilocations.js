@@ -1,7 +1,8 @@
+import { BACKEND } from "../backendjoin/backend"
 export const AddShop = async (Userid, Token, formData) => {
     console.log(formData)
     try {
-        const response = await fetch(`http://localhost:5000/add-shop/${Userid}`, {
+        const response = await fetch(`${BACKEND}/add-shop/${Userid}`, {
             method: 'POST',
             headers: {
                 Accept: "application/json",

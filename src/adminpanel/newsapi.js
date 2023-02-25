@@ -1,7 +1,7 @@
 export const NewsAdder = async (Userid, Token, formData) =>  {
     console.log("",Userid, Token, formData)
     try {
-        const response = await fetch(`http://localhost:5000/add-news/${Userid}`, {
+        const response = await fetch(`${BACKEND}/add-news/${Userid}`, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
@@ -19,7 +19,7 @@ export const NewsAdder = async (Userid, Token, formData) =>  {
 export const getNews = async () =>  {
     // console.log("",Userid, Token, formData)
     try {
-        const response = await fetch(`http://localhost:5000/all-news`, {
+        const response = await fetch(`${BACKEND}/all-news`, {
             method: 'GET',
             headers: {
                 Accept: "application/json",

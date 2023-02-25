@@ -1,11 +1,11 @@
-
+import { BACKEND } from "../backendjoin/backend"
 export const AddProducts = async (Userid, Token, formData) => {
     // console.log("backend",BACKEND)
     console.log("user data ", Userid)
     console.log("user data ", Token)
     console.log("user data ", (formData))
     try {
-        const response = await fetch(`http://localhost:5000/add-product/${Userid}`, {
+        const response = await fetch(`${BACKEND}/add-product/${Userid}`, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
@@ -22,7 +22,7 @@ export const AddProducts = async (Userid, Token, formData) => {
 
 
 export const AllProducts = async (Userid, Token) => {
-    return fetch(`http://localhost:5000/All-Products/${Userid}`, {
+    return fetch(`${BACKEND}/All-Products/${Userid}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
@@ -36,7 +36,7 @@ export const AllProducts = async (Userid, Token) => {
 }
 
 export const ProductsGet = async (Token) => {
-    return fetch(`http://localhost:5000/Products`, {
+    return fetch(`${BACKEND}/Products`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
@@ -48,7 +48,7 @@ export const ProductsGet = async (Token) => {
 }
 export const UpdateProduct = async (product,Userid, Token, formData) => {
     console.log("",product,Userid, Token, formData)
-    return fetch(`http://localhost:5000/update-product/${product}/item/${Userid}`, {
+    return fetch(`${BACKEND}/update-product/${product}/item/${Userid}`, {
         method: 'POST',
         headers: {
             Accept: "application/json",
@@ -64,7 +64,7 @@ export const UpdateProduct = async (product,Userid, Token, formData) => {
 }
 export const DeleteAProduct = async (product, adder, token) => {
     console.log(product, adder, token)
-    return fetch(`http://localhost:5000/product/${product}/${adder}`, {
+    return fetch(`${BACKEND}/product/${product}/${adder}`, {
         method: 'DELETE',
         headers: {
             Accept: "application/json",

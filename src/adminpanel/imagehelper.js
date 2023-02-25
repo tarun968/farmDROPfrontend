@@ -3,7 +3,7 @@ import React from "react";
 export default function ImageProductContainer({ product }) {
     return (
         <>
-            <img src={`http://localhost:5000/Photo/${product._id}`
+            <img src={`${BACKEND}/Photo/${product._id}`
             }
             />
         </>
