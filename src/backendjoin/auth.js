@@ -2,7 +2,7 @@ import {BACKEND} from './backend'
 export const signup = (user) => {
     console.log("backend",BACKEND)
     console.log("user data ",user)
-    return fetch('http://localhost:5000/signup', {
+    return fetch('${BACKEND}/signup', {
         method: 'POST',
         headers: {
             Accept: "application/json",

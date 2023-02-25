@@ -1,10 +1,11 @@
+import { BACKEND } from "../backendjoin/backend";
 export const createOrder = (Userid, Token, OrderData) => {
     // delete OrderData.ImageProduct
     OrderData.forEach(X => {
         delete X['ImageProduct'];
     });
     console.log("",Userid, Token, OrderData)
-    return fetch(`http://localhost:5000/order-purchase/${Userid}`, {
+    return fetch(`${BACKEND}/order-purchase/${Userid}`, {
         method: 'POST',
         headers: {
             Accept: "application/json",

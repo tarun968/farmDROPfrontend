@@ -1,5 +1,6 @@
+import { BACKEND } from "../backendjoin/backend"
 export const createOrder = (userId, Token, OrderData) => {
-    return fetch(`http://localhost:5000//order-purchase/${userId}`, {
+    return fetch(`${BACKEND}/order-purchase/${userId}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',

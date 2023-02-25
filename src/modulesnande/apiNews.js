@@ -1,6 +1,7 @@
+import { BACKEND } from "../backendjoin/backend"
 export const NewsGet = async (ID) => {
     console.log(ID)
-    return fetch(`http://localhost:5000/News/${ID}`, {
+    return fetch(`${BACKEND}/News/${ID}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
@@ -13,7 +14,7 @@ export const NewsGet = async (ID) => {
 export const NewsComment = (Token,formData,UserId,ID) => {
     // console.log(Token,commentdesc,UserId,ID)
     // console.log("backend",BACKEND)
-    return fetch(`http://localhost:5000/comment/${UserId}/${ID}`, {
+    return fetch(`${BACKEND}/comment/${UserId}/${ID}`, {
         method: 'POST',
         headers: {
             Accept: "application/json",

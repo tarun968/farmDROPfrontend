@@ -1,1 +1,1 @@
-export const BACKEND = process.env.REACT_APP_BACKEND
+export const BACKEND = 'https://backendfarmdropmern2.onrender.com/'

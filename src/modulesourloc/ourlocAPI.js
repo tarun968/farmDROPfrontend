@@ -1,5 +1,6 @@
+import { BACKEND } from "../backendjoin/backend"
 export const AllShops = async () => {
-    return fetch(`http://localhost:5000/shopsbycountry`, {
+    return fetch(`${BACKEND}/shopsbycountry`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
@@ -14,7 +15,7 @@ export const AllShops = async () => {
 export const getAllImagesofUser = async (Token, UserId) => {
     console.log(Token, UserId)
     try {
-        const response = await fetch(`http://localhost:5000/all-images/${UserId}`, {
+        const response = await fetch(`${BACKEND}/all-images/${UserId}`, {
             method: 'GET',
             headers: {
                 Accept: "application/json",

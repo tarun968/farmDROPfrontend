@@ -1,3 +1,4 @@
+import { BACKEND } from "../backendjoin/backend";
 import React from "react";
 import { useState } from "react";
 import { isAuthenticated } from "../backendjoin/auth";
@@ -81,7 +82,7 @@ export default function PaymentUser({
                         // amount: response.transaction.amount,
                         // address: isAuthenticated().user.address,
                     };
-                    const verifyUrl = `http://localhost:5000/verify/${user}`;
+                    const verifyUrl = `${BACKEND}/verify/${user}`;
                     const { data } = await axios.post(verifyUrl,
                         response
                         ,
