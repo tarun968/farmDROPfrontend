@@ -10,8 +10,8 @@ export const signup = (user) => {
         },
         body: JSON.stringify(user)
     }).then(response => {
-        console.log(response.text())
-        return response.json()
+        // console.log(response.text())
+        return response.text()
     }
     ).catch(err => console.log("err", err))
 }
