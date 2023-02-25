@@ -1,3 +1,4 @@
+import { BACKEND } from "../backendjoin/backend"
 export const NewsAdder = async (Userid, Token, formData) =>  {
     console.log("",Userid, Token, formData)
     try {
