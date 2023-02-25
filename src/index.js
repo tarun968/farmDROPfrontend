@@ -55,7 +55,6 @@ root.render(
       <Route path="/user/:User/edit-profile" element = {<EditProfile/>} />
       <Route path="/user/:User/orders/order/:orderid" element = {<EditOrder/>} />
       <Route path="/Login/admin/dashboard/order/:orderid" element = {<EditOrderAdmin/>} />
-
       <Route path="/Ourlocation" element={<Ourlocation />} />
       <Route path="/Newsevents" element={<NewEvents />} />
     </Routes>

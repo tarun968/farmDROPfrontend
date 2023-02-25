@@ -1,5 +1,6 @@
 import React from "react";
 import "./SuperBg.css"
+import { Link } from "react-router-dom";
 import ByrantImage from "../pages/img/header1.jpg"
 export default function SuperBg({
     Heading = "YOUR COMMUNITY. YOUR FOOD.",
@@ -40,7 +41,12 @@ export default function SuperBg({
                                     return (
                                         <button type="button" class="text-light btn-outline-light btn btn-lg px-4 gap-3"
                                             style={{ backgroundColor: 'rgb(144, 181, 1)' }}
-                                    >{content}
+                                    >
+                                    <Link to='/Login/user/dashboard'
+                                    style={{color:'white', textDecoration:'none'}}
+                                    >
+                                    {content}
+                                    </Link>
                                             <i aria-hidden="true" class="far fa-arrow-alt-circle-right"></i>
                                         </button>
                                     )
