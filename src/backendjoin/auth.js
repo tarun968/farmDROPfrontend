@@ -11,7 +11,7 @@ export const signup = (user) => {
         body: JSON.stringify(user)
     }).then(response => {
         // console.log(response.text())
-        return response.text()
+        return response.json()
     }
     ).catch(err => console.log("err", err))
 }
@@ -26,7 +26,7 @@ export const signin = (user) => {
         },
         body: JSON.stringify(user)
     }).then(response => {
-        return response.text()
+        return response.json()
     }
     ).catch(err => console.log("err", err))
 }
@@ -58,6 +58,7 @@ export const isAuthenticated = () => {
         return false;
     }
     if (localStorage.getItem("jwt")) {
+        console.log("",typeof window === 'undefined');
         return JSON.parse(localStorage.getItem("jwt"))
     }
     else{

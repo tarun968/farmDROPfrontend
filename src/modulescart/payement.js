@@ -118,7 +118,7 @@ export default function PaymentUser({
         rzp1.open();
     };
 
-
+    console.log("user payment",isAuthenticated())
 
     const handlePayment = async () => {
         try {
