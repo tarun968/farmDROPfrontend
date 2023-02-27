@@ -30,7 +30,7 @@ export default function Sideslider2() {
     const [selecteddesc, setselecteddesc] = useState("")
     const [selected_id, setselectedid] = useState("")
     const [selecteduser, setselecteduser] = useState({
-        ImagesShop:[]
+        ImagesShop: []
     })
     const getlocation_id = (location_ID) => {
         console.log(location_ID)
@@ -39,7 +39,7 @@ export default function Sideslider2() {
         const desc = shops.find(l => l.EmailShop === location_ID)
         console.log("data desc", desc)
         setselecteduser(desc)
-        console.log('selecteduser',selecteduser)
+        console.log('selecteduser', selecteduser)
         setselecteddesc(desc.EmailShop);
         setselectedid(desc.selected_id);
     }
@@ -85,9 +85,12 @@ export default function Sideslider2() {
                         <div class="row mx-auto mt-3">
                             {
                                 selecteduser.ImagesShop.map((element, index) => {
+                                    const base64String = btoa(
+                                        String.fromCharCode(...new Uint8Array(element.data.data))
+                                    )
                                     return (
                                         <img
-                                            src={`http://localhost:5000/Image/${selecteduser._id}/photo/${element._id}/`}
+                                            src={`data:image/jpeg;base64,${base64String}`}
                                             style={{
                                                 width: 105
                                             }}
