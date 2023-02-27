@@ -1,3 +1,4 @@
+import 'bootstrap/dist/js/bootstrap.bundle';
 // import './App.css';
 import Menu2 from "./menu/menu2";
 function App() {

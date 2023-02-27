@@ -2,6 +2,7 @@ import React from 'react';
 import './menu2.css'
 import { Link } from 'react-router-dom';
 import { isAuthenticated, signout } from '../backendjoin/auth';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 const Menu2 = () => {
     const changeText = (e) => {
@@ -12,6 +13,8 @@ const Menu2 = () => {
         e.target.style.color = "Black";
         e.target.style.borderBottom = "None"
     }
+    const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+    const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
     const location = useLocation();
     const link = () => {
         window.location.pathname = "/";
@@ -27,11 +30,36 @@ const Menu2 = () => {
                             require('../farmlaw.png')}
                         style={{ width: "20%", height: "40%", cursor: 'Pointer' }}
                     >
-
                     </img>
-                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
+                    <button class="custom-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded={!isNavCollapsed ? true : false} aria-label="Toggle navigation" onClick={handleNavCollapse}>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`}
+                     id="navbarsExample09">
+                        <ul className="navbar-nav ms-auto"
+                        style={{display :  `${isNavCollapsed ? 'none' : 'block'} `}}>
+                            <li className="nav-item">
+                                <Link className="nav-link" style={{ color: "Black" }} onMouseOver={changeText} onMouseLeave={changetext2} aria-current="page" to="/Aboutus">About</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" style={{ color: "Black" }} onMouseOver={changeText} onMouseLeave={changetext2} to="/Ourlocation">Our Location</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" style={{ color: "Black" }} onMouseOver={changeText} onMouseLeave={changetext2} aria-current="page" to="/Newsevents">News & Events</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" style={{ display: isAuthenticated() ? "none" : "", color: "Black" }} onMouseOver={changeText} onMouseLeave={changetext2} to="/Login">Login</Link>
+                            </li>
+                            {isAuthenticated() &&
+                                (<li className="nav-item">
+                                    <Link className="nav-link" style={{ color: "Black" }} onMouseOver={changeText} onMouseLeave={changetext2} onClick={signout} to='/Login'>LogOut</Link>
+                                </li>)}
+                        </ul>
+                    </div>
+
+
+
                     {(location.pathname == "/Cart" || location.pathname == '/Connect'
                         || location.pathname == '/' || location.pathname == '/Contactus'
                         || location.pathname == '/Login/admin/dashboard' ||
@@ -41,7 +69,6 @@ const Menu2 = () => {
                     )
                         && (
                             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
                                 <ul className="navbar-nav ms-auto">
                                     <li className="nav-item">
                                         <Link className="nav-link" style={{ color: "Black" }} onMouseOver={changeText} onMouseLeave={changetext2} aria-current="page" to="/Aboutus">About</Link>
@@ -60,7 +87,6 @@ const Menu2 = () => {
                                             <Link className="nav-link" style={{ color: "Black" }} onMouseOver={changeText} onMouseLeave={changetext2} onClick={signout} to='/Login'>LogOut</Link>
                                         </li>)}
                                 </ul>
-
                             </div>
                         )}
                     {(location.pathname == '/Aboutus')
