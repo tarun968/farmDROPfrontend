@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { BACKEND } from "../backendjoin/backend"
 export const AddProducts = async (Userid, Token, formData) => {
     // console.log("backend",BACKEND)
@@ -34,14 +35,15 @@ export const AllProducts = async (Userid, Token) => {
     }
     ).catch(err => console.log("err", err))
 }
-
-export const ProductsGet = async (Token) => {
-    return fetch(`${BACKEND}/Products`, {
+// const [pageNo,setPangeNo] = useState(1);
+export const ProductsGet = async (Token,pageNo) => {
+    return fetch(`${BACKEND}/Products/?pageNo = ${pageNo}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
         },
     }).then(response => {
+        console.log("repsonse",response)
         return response.json()
     }
     ).catch(err => console.log("err", err))

@@ -2,40 +2,42 @@ import React from "react";
 import ImageCardContainer from "./imgcontainer";
 import Cards from "./cart";
 import { ProductsGet } from "../adminpanel/apiproducts";
-import { useState, useEffect } from "react";
+import { useState,useEffect } from "react";
 import { isAuthenticated } from "../backendjoin/auth";
 const Cardsproduct = () => {
 
     const { user, Token } = isAuthenticated()
     const [Products, SetProducts] = useState([])
-    const [pageNo, setPangeNo] = useState(1);
+    const [pageNo,setPangeNo] = useState(1);
     const preload = () => {
-        ProductsGet(Token, pageNo).then(data => {
-            console.log("data ", data)
-            if (data.error) {
+        ProductsGet(Token,pageNo).then(data=>{
+            if(data.error){
                 console.log(data.error)
             }
-            else {
-                SetProducts((Prev) => [...Prev,...data.message])
+            else{
+                SetProducts((Prev) => [...Prev,data.message])
+            console.log(Products)
             }
         })
     }
     useEffect(() => {
         preload()
     }, [pageNo])
-    const handleInfiniteScroll = async () => {
-        try {
-            if (window.innerHeight + document.documentElement.scrollTop + 1
-                >= document.documentElement.scrollHeight) {
-                setPangeNo((prev) => (prev + 1))
-            }
-        } catch (error) {
-            console.log("error", error)
+    const handleInfiniteScroll = async () =>{
+        try{
+            if(window.innerHeight + document.documentElement.scrollTop + 1 
+                >= document.documentElement.scrollHeight)
+                {
+                    setPangeNo((prev) => (prev + 1)) 
+                }
+        }catch(error)
+        {
+            console.log("error",error)
         }
     }
     useEffect(() => {
-        window.addEventListener("scroll", handleInfiniteScroll);
-        return () => window.removeEventListener("scroll", handleInfiniteScroll)
+      window.addEventListener("scroll",handleInfiniteScroll);
+      return () => window.removeEventListener("scroll",handleInfiniteScroll)   
     })
     return (
         <>
@@ -61,11 +63,12 @@ const Cardsproduct = () => {
                     {/* <ImageCardContainer image={content.IMG} /> */}
                     {(
                         Products.map((content, index) => {
+                            {/* console.log('->', content) */}
                             return (
                                 <div className="col mx-2"
                                     style={{ width: '30%' }}
                                 >
-                                    <Cards Props={content} />
+                                <Cards Props={content}/>
                                 </div>
                             )
                         })
