@@ -42,7 +42,7 @@ export default function SuperBg({
                                         <button type="button" class="text-light btn-outline-light btn btn-lg px-4 gap-3"
                                             style={{ backgroundColor: 'rgb(144, 181, 1)' }}
                                     >
-                                    <Link to='/Login/user/dashboard'
+                                    <Link to='/Products'
                                     style={{color:'white', textDecoration:'none'}}
                                     >
                                     {content}

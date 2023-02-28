@@ -32,7 +32,7 @@ export default function Cards2(
 
           <div className="card-body">
             <h5>
-              {Title}
+              {Title.substring(0,30)}
             </h5>
             <p className="card-text" style={{ color: '#808285' }}>
               {Description.substring(0, 120)}

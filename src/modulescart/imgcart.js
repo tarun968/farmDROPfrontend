@@ -1,5 +1,6 @@
 import React from "react";
-export default function ImageCardContainer({props}) {
+import './imgcontainer.css';
+export default function ImageCart({props}) {
 
     const base64String = btoa(
         String.fromCharCode(...new Uint8Array(props.ImageProduct.data.data))

@@ -37,7 +37,7 @@ root.render(
       <Route path="/Cart" element={<CartsUser />} />
       <Route path="/Contactus" element={<Contactus />} />
       <Route path="/Connect" element={<Connect />} />
-      <Route path="/Login/user/dashboard" element={<Cart />} />
+      <Route path="/Products" element={<Cart />} />
       <Route path="/profile/:email" element={<UserProfile />} />
       <Route path="/Adding-News" element = {<AddNews />} />
       <Route path="/Adding-Locations" element={<LocationsForm/>} />
@@ -46,7 +46,6 @@ root.render(
       <Route path="/Updating-Products" element={<DeleteProduct />} />
       <Route path="/Adding-Products" element={<ProductForm/>} />
       <Route path ="/Login/admin/dashboard" element = {<AdminPanel />} />
-      
       <Route element = {<PrivateRoute />}>
       <Route element = {<Login/>} path='/Login' />
       </Route>

@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 import { useState } from "react";
 import { removeItemfromCart } from "./carthelper";
 import { addItemtoCart } from "./carthelper";
-import ImageCardContainer from "./imgcontainer";
+import ImageCart from "./imgcart";
 export default function Cards({ Props,
     addtoCart = true, removeFromCart = false,
     SetReload = f => f, Reload = undefined, Count = undefined, showCount = false }) {
@@ -65,8 +65,6 @@ export default function Cards({ Props,
                 style={{ border: '0 0 0 0' }}
             >
                 {getRedirect(Redirect)}
-
-
                 {(Props === undefined) &&
                     (
                         <div class="card w-100 text-center mx-auto">
@@ -83,8 +81,8 @@ export default function Cards({ Props,
 
 
                 {(Props !== undefined) && (
-                    <>
-                        <ImageCardContainer props={Props} />
+                    <div className="w-100 h-100 ">
+                        <ImageCart props={Props} />
                         <span className="card-title fw-bolder" style={{
                             fontSize: '90%'
                         }}>{Props.NameofProduct}
@@ -124,7 +122,7 @@ export default function Cards({ Props,
                                 removefromcart(removeFromCart)
                             }
                         </div>
-                    </>
+                    </div>
                 )
 
                 }

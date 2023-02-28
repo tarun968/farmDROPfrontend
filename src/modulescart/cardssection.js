@@ -28,24 +28,14 @@ const Cardsproduct = () => {
     return (
         <>
             <div className="row">
-                <div className="row row-cols-md-2 col-md-3 gx-0">
-                
-                </div>
-                <div className="row row-cols-md-2 col-md-9 gx-0 my-5">
+                <div className="mx-auto row row-cols-md-2 col-md-9 gx-0 my-5">
                     <div class="col-md-12">
                         <section class="">
                             <h4 className="">All Products</h4>
-                            
                         </section>
                     </div>
-
                     <div class="col-md-12">
                         <section class="d-flex justify-content-space-between">
-                            <div className="row">
-                                <div className="">
-
-                                </div>
-                            </div>
                             <form className="">
                                 <select class="form-select w-100 float-right" aria-label="Default select example">
                                     <option selected>Open this select menu</option>
@@ -61,8 +51,8 @@ const Cardsproduct = () => {
                         Products.map((content, index) => {
                             {/* console.log('->', content) */}
                             return (
-                                <div className="col"
-                                    style={{ width: '20%' }}
+                                <div className="col mx-2"
+                                    style={{ width: '30%' }}
                                 >
                                 <Cards Props={content}/>
                                 </div>
