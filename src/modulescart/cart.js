@@ -14,7 +14,7 @@ export default function Cards({ Props,
 
     // const [removeFromCart, setremoveFromCart] = useState(true)
     const addCart = () => {
-        addItemtoCart(Props, () => setRedirect(true))
+        addItemtoCart(Props, () => setRedirect(false))
     }
     const getRedirect = (Redirect) => {
         // console.log("redirec", Redirect)

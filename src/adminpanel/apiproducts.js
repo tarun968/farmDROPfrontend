@@ -54,7 +54,7 @@ export const AllProducts = async (Userid, Token) => {
 }
 // const [pageNo,setPangeNo] = useState(1);
 export const ProductsGet = async (Token,pageNo) => {
-    return fetch(`${BACKEND}/Products/?pageNo = ${pageNo}`, {
+    return fetch(`${BACKEND}/Products/?pageNo=${pageNo}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
