@@ -28,15 +28,23 @@ export default function Orders() {
             <h1 class="ms-5 mt-5">
                 Orders
             </h1>
-                <div class="w-75 ms-5 mt-5"
+                <div class="w-100 ms-5 mt-5"
                     style={{ height: "fit-content" }}>
                     <ul class="list-group list-group-flush my-2">
                         {Orders.map((index, element) => {
+                            console.log(index)
                             return (
-                                <li className="list-group-item nav-item">
-                                    <Link className="nav-link" style={{ color: "Black" }} aria-current="page" to={`order/${index._id}/`}>
+                                <li className="w-100 list-group-item nav-item d-flex flex-row">
+                                    <Link className="mx-2 nav-link" style={{ color: "Black" }} aria-current="page" to={`order/${index._id}/`}>
                                         Order ID:{index._id}
                                     </Link>
+                                    <Link className="nav-link mx-2 " style={{ color: "Black" }} aria-current="page" to={`order/${index._id}/`}>
+                                        Order Date:{index.Date.substring(0,10)}
+                                    </Link>
+                                    <Link className="nav-link mx-2" style={{ color: "Black" }} aria-current="page" to={`order/${index._id}/`}>
+                                        Order Amount:{index.amount}
+                                    </Link>
+                                    
                                 </li>
                             )
                         })}
