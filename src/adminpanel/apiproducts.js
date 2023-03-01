@@ -21,7 +21,24 @@ export const AddProducts = async (Userid, Token, formData) => {
     }
 }
 
-
+export const AddProducts2 = async (user, Token, ProductValues) => {
+    console.log(ProductValues,user._id)
+    // const {Token,user,formData} = User;
+    try {
+        const response = await fetch(`${BACKEND}/add-productNew/${user._id}`, {
+            method: 'POST',
+            headers: {
+                Accept: "application/json",
+                // "Content-Type": "application/json",
+                Authorization: `Bearer ${Token}`
+            },
+            body:(ProductValues)
+        })
+        return await response.json()
+    } catch (err) {
+        return console.log("err", err)
+    }
+}
 export const AllProducts = async (Userid, Token) => {
     return fetch(`${BACKEND}/All-Products/${Userid}`, {
         method: 'GET',

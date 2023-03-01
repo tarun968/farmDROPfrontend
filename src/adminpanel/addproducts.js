@@ -2,8 +2,10 @@ import React from "react";
 import Menu2 from "../menu/menu2"
 import { useState, useEffect } from "react";
 import { isAuthenticated } from "../backendjoin/auth";
-import { AddProducts } from "./apiproducts";
+import { AddProducts, AddProducts2 } from "./apiproducts";
 import Footer from "../pages/footer";
+// import axio
+import axios from "axios";
 export default function ProductForm() {
     const { user, Token } = isAuthenticated()
     console.log(user)
@@ -33,11 +35,19 @@ export default function ProductForm() {
     }, []);
     const onSubmit = event => {
         event.preventDefault();
+        const id = user._id 
+        var formData = new FormData()
+        formData.append("ImageProduct",ProductValues.ImageProduct)
+        formData.append("NameofProduct",ProductValues.NameofProduct)
+        formData.append("Price",ProductValues.Price)
+        formData.append("ProductID",ProductValues.ProductID)
+        formData.append("Quantity",ProductValues.Quantity)
+        formData.append("AddedBy",user._id)
         SetProductValues({ ...ProductValues, error: "", loading: true })
-        AddProducts(user._id, Token, formData).then(data => {
-            if (data.error) {
-                SetProductValues({ ...ProductValues, error: false });
-            } else {
+        axios.post(`http://localhost:5000/add-productNew/${user._id}`, formData
+        ,{ headers: {"Authorization" : `Bearer ${Token}`} })
+             .then(res => {
+                // console.log(res);
                 SetProductValues({
                     ...ProductValues,
                     NameofProduct: "",
@@ -47,10 +57,29 @@ export default function ProductForm() {
                     error: true,
                     Quantity: "",
                     loading: false,
-                    NewProduct: data.NameofProduct
+                    // NewProduct: data.NameofProduct
                 });
-            }
-        });
+             })
+             .catch(err => {
+                SetProductValues({ ...ProductValues, error: false });
+            });
+        // AddProducts2(user, Token, formData).then(data => {
+        //     if (data.error) {
+             
+        //     } else {
+                // SetProductValues({
+                //     ...ProductValues,
+                //     NameofProduct: "",
+                //     Price: "",
+                //     ProductID: "",
+                //     ImageProduct: "",
+                //     error: true,
+                //     Quantity: "",
+                //     loading: false,
+                //     NewProduct: data.NameofProduct
+                // });
+        //     }
+        // });
     }
     console.log(" ", error)
     const handleChange = name => event => {
