@@ -39,8 +39,8 @@ export const AddProducts2 = async (user, Token, ProductValues) => {
         return console.log("err", err)
     }
 }
-export const AllProducts = async (Userid, Token) => {
-    return fetch(`${BACKEND}/All-Products/${Userid}`, {
+export const AllProducts = async (Token) => {
+    return fetch(`${BACKEND}/Products`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
