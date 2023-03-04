@@ -14,8 +14,24 @@ export const GetuserDetails = async (Userid, Token) => {
 }
 
 
-export const GetuserOrder = async (Userid, Token) => {
-    return fetch(`${BACKEND}/Order/users/${Userid}`, {
+export const GetuserOrder = async (Userid, Token,Date) => {
+    return fetch(`${BACKEND}/Order/users/${Userid}/?query=${Date}`, {
+        method: 'GET',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${Token}`
+        },
+    }).then(response => {
+        return response.json()
+    }
+    ).catch(err => console.log("err", err))
+}
+
+
+
+export const GetuserOrders = async (Userid, Token) => {
+    return fetch(`${BACKEND}/Orders/${Userid}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
