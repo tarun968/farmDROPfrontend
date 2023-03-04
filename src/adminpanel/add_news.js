@@ -10,7 +10,6 @@ export default function AddNews() {
     const [NewsDetails, SetNews] = useState({
         Headline: "",
         News: "",
-        formData: "",
         loading: false,
         NewNews:"",
         error: false,
@@ -19,16 +18,24 @@ export default function AddNews() {
     })
 
     const { Headline, loading,
-        error, News, NewNews, DateNews, formData } = NewsDetails
+        error, News, NewNews, DateNews} = NewsDetails
 
     const preload = () => {
-        SetNews({ ...NewsDetails, formData: new FormData() })
+        SetNews({ ...NewsDetails })
     }
     useEffect(() => {
         preload();
     }, []);
     const onSubmit = (event) => {
         event.preventDefault();
+        var formData =  new FormData();
+        formData.append("Headline",NewsDetails.Headline)
+        formData.append("News",NewsDetails.News)
+        formData.append("Adder",NewsDetails.Adder)
+        formData.append("ImageNews",NewsDetails.ImageNews)
+        formData.append("DateNews",NewsDetails.DateNews)
+        formData.append("Quantity",NewsDetails.Quantity)
+        formData.append("Adder",user.Email)
         SetNews({ ...NewsDetails, error: "", loading: true })
         NewsAdder(user._id, Token, formData).then(data => {
             if (data.error) {
@@ -38,7 +45,6 @@ export default function AddNews() {
                     ...NewsDetails,
                     Headline: "",
                     News: "",
-                    formData: "",
                     error: true,
                     loading: false,
                     Adder: user.Email,
@@ -52,7 +58,7 @@ export default function AddNews() {
     const handleChange = name => event => {
         const value = name === "ImageNews" ? event.target.files[0] : event.target.value
         console.log(name, value)
-        formData.set(name, value);
+        // formData.set(name, value);
         SetNews({ ...NewsDetails, [name]: value });
     }
     return (

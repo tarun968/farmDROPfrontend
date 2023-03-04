@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { isAuthenticated } from "../backendjoin/auth";
 // import { AddProducts } from "./apiproducts";
 import { AddShop } from "./apilocations";
+import { Form } from "react-router-dom";
 export default function LocationsForm() {
     const { user, Token } = isAuthenticated()
     console.log(user)
@@ -43,7 +44,13 @@ export default function LocationsForm() {
     const onSubmit = event => {
         event.preventDefault();
         SetProductValues({ ...ProductValues, error: "", loading: true })
-        AddShop(user._id, Token, formData).then(data => {
+        var formdata = new FormData()
+        formdata.append("NameofShop",ProductValues.NameofShop)
+        formdata.append("EmailShop",ProductValues.EmailShop)        
+        formdata.append("AddedBy",ProductValues.AddedBy)        
+        formdata.append("ShopId",ProductValues.ShopID)        
+        formdata.append("DateofAdd",ProductValues.DateofAdd)
+        AddShop(user._id, Token, formdata).then(data => {
             if (data.error) {
                 SetProductValues({ ...ProductValues, error: false });
             } else {
