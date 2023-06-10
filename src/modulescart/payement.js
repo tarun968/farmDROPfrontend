@@ -123,7 +123,7 @@ export default function PaymentUser({
     const handlePayment = async () => {
         try {
             console.log(`${user._id}`)
-            const orderUrl = `http://localhost:5000/payment/${user._id}/product`;
+            const orderUrl = `${BACKEND}/payment/${user._id}/product`;
             const { data } = await axios.post(orderUrl,
                 {
                     amount: getFinalPrice(),
